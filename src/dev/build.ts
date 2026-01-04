@@ -46,7 +46,7 @@ async function watchAll(): Promise<void> {
 
 	startServer();
 
-	const watcher = watch(`${PROJECT_ROOT}/src`, {recursive: true});
+	const watcher = watch(`${PROJECT_ROOT}/src`, { recursive: true });
 
 	for await (const event of watcher) {
 		console.log(`BUILD: Detected ${event.eventType} in ${event.filename}`);
@@ -65,8 +65,11 @@ async function watchAll(): Promise<void> {
 	}
 }
 
-// buildAll();
-watchAll();
+if (Bun.argv.includes('build')) {
+	buildAll();
+} else {
+	watchAll();
+}
 
 async function buildServiceWorker(): Promise<void> {
 	await build({
