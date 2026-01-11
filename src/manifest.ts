@@ -1,12 +1,12 @@
 import packageJson from '../package.json';
 
 export default {
-	"name": "News Feed Eradicator",
+	"name": "Focus Mode",
 	"version": packageJson.version,
-	"description": packageJson.description,
+	"description": "Remove distractions from your browsing.",
 	"manifest_version": 3,
 	"permissions": ["storage", "scripting"],
-	"optional_host_permissions": ["*://*/*"],
+	"host_permissions": ["*://*/*"],
 	"action": {
 		"default_icon": {
 			"16": "assets/icon16.png",
@@ -15,18 +15,38 @@ export default {
 			"64": "assets/icon64.png",
 			"128": "assets/icon128.png"
 		},
-		"default_title": "News Feed Eradicator"
+		"default_title": "Focus Mode"
 	},
 	"background": {
 		"service_worker": "entrypoints/service-worker/service-worker.js",
-		"scripts": ["entrypoints/service-worker/service-worker.js"],
 		"type": "module"
 	},
-	"options_ui": {
-		"page": "entrypoints/options-page/index.html",
-		"open_in_tab": true,
-		"browser_style": false
-	},
+	"content_scripts": [
+		{
+			"matches": [
+				"*://*.facebook.com/*",
+				"*://*.reddit.com/*",
+				"*://*.twitter.com/*",
+				"*://*.x.com/*",
+				"*://*.youtube.com/*",
+				"*://*.abc.net.au/*",
+				"*://shopee.sg/*",
+				"*://shopee.com.my/*",
+				"*://shopee.co.th/*",
+				"*://shopee.co.id/*",
+				"*://shopee.ph/*",
+				"*://shopee.vn/*",
+				"*://shopee.com.br/*",
+				"*://shopee.com.mx/*",
+				"*://shopee.com.co/*",
+				"*://shopee.cl/*",
+				"*://*.substack.com/*"
+			],
+			"js": ["entrypoints/intercept/intercept.js"],
+			"run_at": "document_start",
+			"all_frames": false
+		}
+	],
 	"icons": {
 		"16": "assets/icon16.png",
 		"32": "assets/icon32.png",
@@ -36,13 +56,13 @@ export default {
 	},
 	"web_accessible_resources": [
 		{
-			"resources": ["sitelist.json", "entrypoints/intercept/intercept.js"],
+			"resources": ["sitelist.json"],
 			"extension_ids": [],
 		}
 	],
 	"browser_specific_settings": {
 		"gecko": {
-			"id": "@news-feed-eradicator"
+			"id": "@focus-mode"
 		},
 		"gecko_android": {
 			"strict_min_version": "113.0"

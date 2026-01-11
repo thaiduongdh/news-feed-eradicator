@@ -10,7 +10,7 @@ async function buildAll(): Promise<void> {
 	console.log('Rebuilding')
 	await buildSiteList();
 	await buildServiceWorker();
-	await buildOptionsPage();
+	// await buildOptionsPage();
 	await buildIntercept();
 	await buildManifest();
 
