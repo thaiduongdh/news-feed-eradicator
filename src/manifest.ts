@@ -40,7 +40,9 @@ export default {
 				"*://shopee.com.mx/*",
 				"*://shopee.com.co/*",
 				"*://shopee.cl/*",
-				"*://*.substack.com/*"
+				"*://*.substack.com/*",
+				"*://*.instagram.com/*",
+				"*://*.tiktok.com/*"
 			],
 			"js": ["entrypoints/intercept/intercept.js"],
 			"run_at": "document_start",

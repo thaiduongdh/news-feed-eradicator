@@ -7,6 +7,8 @@ import { substack } from "./substack";
 import { twitter } from "./twitter";
 import { youtube } from "./youtube";
 import { facebook } from "./facebook";
+import { instagram } from "./instagram";
+import { tiktok } from "./tiktok";
 
 const sitelist: SiteList = {
 	schemaVersion: 1,
@@ -19,6 +21,8 @@ const sitelist: SiteList = {
 		abcNewsAu,
 		shopee,
 		facebook,
+		instagram,
+		tiktok,
 	]
 }
 
